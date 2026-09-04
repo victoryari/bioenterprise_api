@@ -109,3 +109,14 @@ Route::get('/gratificaciones', [GratificacionController::class, 'index']);
 Route::get('/gratificaciones/{id}', [GratificacionController::class, 'show']);
 Route::post('/gratificaciones/procesar', [GratificacionController::class, 'procesar']);
 Route::delete('/gratificaciones/{id}', [GratificacionController::class, 'destroy']);
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-migrations', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Migraciones ejecutadas en Render PostgreSQL',
+        'output' => Artisan::output(),
+    ]);
+});
