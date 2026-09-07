@@ -120,3 +120,12 @@ Route::get('/run-migrations', function () {
         'output' => Artisan::output(),
     ]);
 });
+
+Route::get('/migrate-fresh', function () {
+    Artisan::call('migrate:fresh', ['--force' => true]);
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Migraciones (fresh) ejecutadas en Render PostgreSQL',
+        'output' => Artisan::output(),
+    ]);
+});

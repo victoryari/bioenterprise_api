@@ -8,7 +8,11 @@ return new class extends Migration {
             $table->string('id', 30)->primary();
             $table->string('nombre', 100);
             $table->time('hora_entrada');
+            $table->time('ventana_entrada_desde')->nullable();
+            $table->time('ventana_entrada_hasta')->nullable();
             $table->time('hora_salida');
+            $table->time('ventana_salida_desde')->nullable();
+            $table->time('ventana_salida_hasta')->nullable();
             $table->integer('minutos_tolerancia')->default(10);
             $table->time('inicio_refrigerio')->nullable();
             $table->time('fin_refrigerio')->nullable();
